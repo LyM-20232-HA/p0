@@ -14,6 +14,16 @@ def main():
 
     tokens = lxr.load_code(user_input)
 
-    lxr.parse(tokens)
+    print(tokens)
+
+    varsValidas, vars = lxr.find_variables(tokens)
+
+    valueVarsValidas, valueVars = lxr.find_variable_values(tokens, vars)
+
+    procValidos, proc = lxr.find_procedures(tokens)
+
+    parametros_procedimientos, parametros_validos = lxr.obtener_parametros(tokens, proc)
+
+    print(parametros_procedimientos, parametros_validos)
 
 main()
