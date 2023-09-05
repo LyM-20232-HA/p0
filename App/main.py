@@ -12,18 +12,17 @@ def main():
 
     assert os.path.exists(user_input), "I did not find the file at, "+str(user_input)
 
-    tokens = lxr.load_code(user_input)
+    tokens, valid, vars, valueVars, proc, parametros_procedimientos = lxr.load_code(user_input)
 
-    print(tokens)
-
-    varsValidas, vars = lxr.find_variables(tokens)
-
-    valueVarsValidas, valueVars = lxr.find_variable_values(tokens, vars)
-
-    procValidos, proc = lxr.find_procedures(tokens)
-
-    parametros_procedimientos, parametros_validos = lxr.obtener_parametros(tokens, proc)
-
-    print(parametros_procedimientos, parametros_validos)
+    if valid == True:
+        valid = prs.parse(tokens, vars, valueVars, proc, parametros_procedimientos)
+        if valid == True:
+            ans = "Yes"
+        else:
+            ans ="No"
+    else: 
+        ans ="No"
+        
+    print(ans)
 
 main()

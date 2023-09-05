@@ -14,9 +14,22 @@ def load_code (file_path):
     file.close
 
     tokens = tokenize(code)
-    fin_tokens = castInteger(tokens)
+    cast_tokens = castInteger(tokens)
 
-    return fin_tokens 
+    varsproc = False
+
+    varsValidas, vars = find_variables(tokens)
+
+    valueVarsValidas, valueVars = find_variable_values(tokens, vars)
+
+    procValidos, proc = find_procedures(tokens)
+
+    parametros_procedimientos, parametros_validos = obtener_parametros(tokens, proc)
+
+    if varsValidas and valueVarsValidas and procValidos and parametros_validos: 
+        varsproc = True
+
+    return cast_tokens, varsproc, vars, valueVars, proc, parametros_procedimientos
 
 #utiliza una expresion regular para separar la cadena de texto
 def tokenize(text):
@@ -37,7 +50,6 @@ def tokenize(text):
             u_tokens.append(tokens[index])
 
     return u_tokens
-
 
 #intenta volver el token un numero si es posible. 
 
@@ -63,10 +75,9 @@ conditional = ["if", "else"]
 loop = ["while"]
 repeatTimes = ["repeat", "times"]
 conditions = ["facing", "can", "not", ]
-
 palabrasReservadas = [defWords, symbols, simpleCommands, conditional, loop, repeatTimes, conditions]
 
-#Definir las variables presentes en el codigo 
+#Encontrar las variables y los procedimientos 
 def find_variables(tokens):
     varsValidas = True
     varSiguiente=False
