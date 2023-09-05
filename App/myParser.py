@@ -12,7 +12,7 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
 
     palabrasReservadas = [defWords, symbols, simpleCommands, conditional, loop, repeatTimes, conditions]
 
-    for token in tokens:
+    for token in range(0,len(tokens)):
         pass
 
     #falta hacer que dependiendo del token quee lea ejecute alguna de las de abajo y pues cada una de esas verifica algo.
