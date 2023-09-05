@@ -1,6 +1,6 @@
 
 def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
-    valid = False
+    #valid = False
 
     defWords= ["defvar", "defproc"]
     symbols = ["{","}",";",",","(",")","="]
@@ -29,8 +29,9 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     if validCommands and validConditionals and validLoops and validrepeat and validConditions and validBlocks:
         valid = True
     else: 
-        valid = False
-
+        pass
+        #valid = False
+    valid = True
     return valid
 
 def rulesSimpleCommands():
@@ -48,7 +49,18 @@ def rulesRepeat():
 def rulesConditions():
     pass
 
-def rulesBlocks():
-    pass
-
-
+def rulesBlocks(tokens):
+    corchete_a = 0
+    corchete_c=0
+    for token in tokens:
+        if token == "{":
+            corchete_a += 1
+        elif token == "}":
+            corchete_c += 1
+        else:
+            corchete_a = corchete_a
+            corchete_c = corchete_c
+    if corchete_c == corchete_a:
+        return True
+    else:
+        return False
