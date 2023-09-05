@@ -26,10 +26,10 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     validConditions = rulesConditions()
     validBlocks = rulesBlocks()
 
-    if validCommands and validConditionals and validLoops and validrepeat and validConditions and validBlocks:
-        valid = True
-    else: 
-        valid = False
+    #if validCommands and validConditionals and validLoops and validrepeat and validConditions and validBlocks:
+     #   valid = True
+    #else: 
+     #   valid = False
 
     return valid
 
