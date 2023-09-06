@@ -15,7 +15,7 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     validCommands = False
     validConditionals = False
     validLoops = False
-    validrepeat = False
+    validrepeat = True
     validConditions = False
     for token in range(0,len(tokens)):
         if lxr.NotIn_palabrasreservadas(str(tokens[token]),simpleCommands) == False:
@@ -62,6 +62,8 @@ def rulesRepeat(lista,posicion):
     llave=lista[posicion+3]
     if (isinstance(value,int) == True) and (times == "times") and (llave == "{"):
         return True
+    else:
+        return False
     
 
 def rulesConditions(lista,posicion):
