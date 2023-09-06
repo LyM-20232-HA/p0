@@ -12,11 +12,11 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
 
     palabrasReservadas = [defWords, symbols, simpleCommands, conditional, loop, repeatTimes, conditions]
 
-    validCommands = False
-    validConditionals = False
-    validLoops = False
+    validCommands = True
+    validConditionals = True
+    validLoops = True
     validrepeat = True
-    validConditions = False
+    validConditions = True
     for token in range(0,len(tokens)):
         if lxr.NotIn_palabrasreservadas(str(tokens[token]),simpleCommands) == False:
             validCommands = rulesSimpleCommands(tokens,token)
@@ -45,7 +45,51 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     return valid
 
 def rulesSimpleCommands(lista,posicion):
-    pass
+    rta=True
+    pa=lista[posicion+1]
+    v1=lista[posicion+2]
+    v2=lista[posicion+3]
+    pc=lista[posicion+4]
+    if lista[posicion]=="jump":
+        if pa == "(" and isinstance(v1,int) and isinstance(v2,int) and pc == ")":
+            rta=True
+        else:
+            rta=False
+    elif (lista[posicion]=="walk") or (lista[posicion]=="leap"):
+        if pa=="(" and isinstance(v1,int) and v2==")":
+            rta=True
+        elif pa=="(" and isinstance(v1,int) and pc==")":
+            if v2=="front" or v2 == "right" or v2=="left" or v2=="back":
+                rta=True
+            elif v2=="north" or v2 == "south" or v2=="east" or v2=="west":
+                rta=True
+            else:
+                rta=False
+    elif lista[posicion]=="turn":
+        if pa=="(" and v2==")":
+            if v1 == "right" or v1=="left" or v1=="around":
+             rta=True 
+            else:
+                rta=False
+    elif lista[posicion]=="turnto":
+        if pa=="(" and v2==")":
+            if v1 == "north" or v1=="south" or v1=="west" or v1=="east":
+             rta=True 
+            else:
+                rta=False
+    elif (lista[posicion]=="drop") or (lista[posicion]=="get"):
+        if pa=="(" and v2==")":
+            if v1=="c":
+                rta=True
+            else:
+                rta=False
+    elif (lista[posicion]=="grab") or (lista[posicion]=="letGo"):
+        if pa=="(" and v2==")":
+            if v1=="b":
+                rta=True
+            else:
+                rta=False
+
 
 def rulesConditionals(lista,posicion):
     pass
