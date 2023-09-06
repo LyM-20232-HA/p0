@@ -89,6 +89,10 @@ def rulesSimpleCommands(lista,posicion):
                 rta=True
             else:
                 rta=False
+    else:
+        rta=False
+
+    return rta
 
 
 def rulesConditionals(lista,posicion):
