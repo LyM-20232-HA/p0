@@ -174,8 +174,9 @@ def obtener_parametros(tokens, nombres_procedimientos):
             # Token dentro de los paréntesis, agregar a la lista de parámetros
             if token == ',':
                 continue  # Ignorar comas como separadores
-            if  NotIn_palabrasreservadas(token, palabrasReservadas):
-                parametros_validos = False  # Un nombre de parámetro es una palabra reservada
+            if  not NotIn_palabrasreservadas(token, palabrasReservadas):
+                parametros_validos = False
+                print("aqui")  # Un nombre de parámetro es una palabra reservada
             parametros_actual.append(token)
 
     if procedimiento_actual:

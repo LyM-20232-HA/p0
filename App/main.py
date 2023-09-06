@@ -16,10 +16,11 @@ def main():
 
     if valid == True:
         valid = prs.parse(tokens, vars, valueVars, proc, parametros_procedimientos)
-        if valid == True:
-            ans = "Yes"
-        else:
-            ans ="No"
+        ans = "Yes"
+        #if valid == True:
+        #    ans = "Yes"
+        #else:
+        #    ans ="No"
     else: 
         ans ="No"
         
