@@ -12,7 +12,7 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
 
     palabrasReservadas = [defWords, symbols, simpleCommands, conditional, loop, repeatTimes, conditions]
 
-    validCommands = True
+    validCommands = False
     validConditionals = True
     validLoops = True
     validrepeat = True
@@ -104,7 +104,7 @@ def rulesConditionals(lista,posicion):
     ca=0
     cc=0
     rta=False
-    while (contador<=len(lista)) or lista[contador]=="else":
+    while (contador<len(lista)) or lista[contador]=="else":
         contador +=1
     if lista[contador]=="else":
         for c in range(posicion,contador):
@@ -127,7 +127,7 @@ def rulesloops(lista,posicion):
     cc=0
     contador=posicion
     rta=False
-    while (contador<=len(lista)) or lista[contador]=="}":
+    while (contador<len(lista)) or lista[contador]=="}":
         if lista[contador]=="{":
             ca += 1
             contador += 1
@@ -161,7 +161,7 @@ def rulesConditions(lista,posicion,simpleCommands):
     ca=0
     cc=0
     contador=posicion
-    while (contador<=len(lista)) or cc==2:
+    while (contador<len(lista)) or cc==2:
         if lista[contador]=="(":
             ca += 1
             contador += 1
