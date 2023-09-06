@@ -18,15 +18,15 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     validrepeat = False
     validConditions = False
     for token in range(0,len(tokens)):
-        if lxr.NotIn_palabrasreservadas(tokens[token],simpleCommands) == False:
+        if lxr.NotIn_palabrasreservadas(str(tokens[token]),simpleCommands) == False:
             validCommands = rulesSimpleCommands(tokens,token)
-        elif lxr.NotIn_palabrasreservadas(tokens[token],conditional) == False:
+        elif lxr.NotIn_palabrasreservadas(str(tokens[token]),conditional) == False:
             validConditionals = rulesConditionals(tokens,token)
-        elif lxr.NotIn_palabrasreservadas(tokens[token],loop) == False:
+        elif lxr.NotIn_palabrasreservadas(str(tokens[token]),loop) == False:
             validLoops = rulesloops(tokens,token)
         elif tokens[token] == "repeat":
             validrepeat = rulesRepeat(tokens,token)
-        elif lxr.NotIn_palabrasreservadas(tokens[token],conditions) == False:
+        elif lxr.NotIn_palabrasreservadas(str(tokens[token]),conditions) == False:
             validConditions = rulesConditions(tokens,token)
         else:
             pass
