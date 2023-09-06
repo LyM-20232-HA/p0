@@ -13,7 +13,8 @@ def parse(tokens, vars, valueVars, proc, parametros_procedimientos):
     palabrasReservadas = [defWords, symbols, simpleCommands, conditional, loop, repeatTimes, conditions]
 
     for token in range(0,len(tokens)):
-        pass
+        if tokens[token]:
+            pass
 
     #falta hacer que dependiendo del token quee lea ejecute alguna de las de abajo y pues cada una de esas verifica algo.
     #por ejemplo, si el token que encuentra es un commando toca revisar la sintaxis de dicho comando. entnoces toca escibir las funciones que revisan de cada cosa.
